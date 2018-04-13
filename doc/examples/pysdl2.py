@@ -41,6 +41,14 @@ def main():
         imgui.begin("Custom window", True)
         imgui.text("Bar")
         imgui.text_colored("Eggs", 0.2, 1., 0.)
+
+        sel = imgui.selectable('click me to give draw list & segfault', False)
+        if sel[1]: # clicked
+            print "draws"
+            draws = imgui.get_draw_data()
+            print draws
+            print draws.commands_lists
+
         imgui.end()
 
         gl.glClearColor(1., 1., 1., 1)
